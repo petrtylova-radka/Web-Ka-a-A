@@ -839,7 +839,7 @@ ul {
     padding: 1.5rem 3rem;
     border-radius: 120px;
     box-shadow: 0 25px 60px rgba(135, 122, 112, 0.12);
-    border: 1px solid rgba(135, 122, 112, 0.1);
+    border: 1px solid var(--secondary);
     position: relative;
     background: radial-gradient(circle at 30% 30%, #fff 0%, #f9f8f6 100%);
     text-transform: uppercase;
@@ -875,18 +875,18 @@ ul {
 
 .levitate-item {
     position: absolute;
-    background: #fdfdfb;
     padding: 1.8rem 2.2rem;
     border-radius: 50px;
     box-shadow: 0 15px 45px rgba(135, 122, 112, 0.08);
     max-width: 320px;
-    border: 1px solid rgba(135, 122, 112, 0.15);
+    border: 1px solid var(--secondary);
     transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
     pointer-events: auto;
     cursor: default;
     z-index: 5;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(8px);
+    background: rgba(196, 195, 208, 0.15);
+    /* Light secondary tint */
+    backdrop-filter: blur(12px);
 }
 
 .levitate-item p {
@@ -1782,8 +1782,8 @@ ul {
 }
 
 .footer-desktop-image {
-    flex: 0 0 280px;
-    height: 350px;
+    flex: 0 0 220px;
+    height: 280px;
     overflow: visible;
     /* Changed from hidden to show decoration */
     position: relative;
@@ -1919,8 +1919,8 @@ ul {
 
     .footer-desktop-image {
         flex: none;
-        width: 200px;
-        height: 250px;
+        width: 160px;
+        height: 200px;
         margin: 0 auto;
     }
 
@@ -2079,6 +2079,13 @@ ul {
     /* Disable hover transforms on mobile to prevent overflow */
     .method-item:hover {
         transform: none !important;
+    }
+
+    /* Mobile Background Adjustments */
+    .about-brief {
+        background-position: left center;
+        background-attachment: scroll;
+        /* Fixed background can be buggy on mobile */
     }
 }
 

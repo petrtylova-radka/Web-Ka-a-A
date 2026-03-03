@@ -14,22 +14,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Hero Slider Automatic Rotation
-    const heroSlides = document.querySelectorAll('.hero-slider .slide');
-    if (heroSlides.length === 3) {
-        const classes = ['slide-prev', 'slide-center', 'slide-next'];
-        let currentIndex = 0;
-
+    // Hero Slider Side-by-Side Toggle
+    const heroSlides = document.querySelectorAll('.hero-slider.side-by-side .slide');
+    if (heroSlides.length === 2) {
+        let activeIdx = 0;
         const rotateHeroSlider = () => {
-            currentIndex = (currentIndex - 1 + classes.length) % classes.length;
-            heroSlides.forEach((slide, index) => {
-                slide.classList.remove(...classes);
-                const classIndex = (index + classes.length - currentIndex) % classes.length;
-                slide.classList.add(classes[classIndex]);
-            });
+            heroSlides[activeIdx].classList.remove('slide-active');
+            activeIdx = (activeIdx + 1) % 2;
+            heroSlides[activeIdx].classList.add('slide-active');
         };
-
-        setInterval(rotateHeroSlider, 4000); // Elegant automatic rotation every 4s
+        setInterval(rotateHeroSlider, 4000);
     }
 
     // About Section Slider Automatic Rotation
@@ -62,6 +56,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!isActive) {
                 item.classList.add('active');
+            }
+        });
+    });
+
+    // Reference Expand/Collapse
+    const refToggles = document.querySelectorAll('.ref-toggle');
+    refToggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const card = toggle.closest('.reference-card');
+            const span = toggle.querySelector('span');
+            card.classList.toggle('active');
+
+            const isExpanded = card.classList.contains('active');
+            toggle.setAttribute('aria-label', isExpanded ? 'Zobrazit méně' : 'Zobrazit více');
+            if (span) {
+                span.textContent = isExpanded ? 'Zobrazit méně' : 'Číst více';
             }
         });
     });

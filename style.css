@@ -217,14 +217,15 @@ ul {
 }
 
 .btn-secondary {
-    border-color: var(--primary);
-    color: var(--primary);
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+    color: var(--text-color);
 }
 
 .btn-secondary:hover {
-    background-color: var(--secondary);
-    color: var(--text-color);
-    border-color: var(--secondary);
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
 }
 
 .btn-large {
@@ -321,39 +322,29 @@ ul {
 
 /* Hero Section Redesign */
 .hero {
-    padding-top: 3rem;
-    /* Reduced from 6rem to move text up */
-    padding-bottom: var(--space-l);
-    background-color: var(--bg-color);
-    min-height: 80vh;
-    /* Reduced from 90vh to fit on screen */
+    position: relative;
+    padding-top: 10rem;
+    padding-bottom: 4rem;
+    background: linear-gradient(to right, #ffffff 0%, #f9f9f9 25%, rgba(249, 249, 249, 0) 60%), url('Obrazky/Hlavni/foto-hero.jpg');
+    background-size: contain;
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-color: #f9f9f9;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 .hero-container {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    /* Align top with images */
-    justify-content: space-between;
-    gap: 1rem;
-    /* Minimize gap so photos move left */
+    display: block;
     text-align: left;
 }
 
 .hero-content-wrapper {
-    flex: 0.65;
-    /* Even narrower text area so photos go left */
+    max-width: 750px;
     z-index: 10;
-}
-
-.hero-image-wrapper {
-    flex: 2.8;
-    /* Wider photos */
     position: relative;
-    z-index: 5;
 }
 
 .hero-header-box {
@@ -515,6 +506,13 @@ ul {
     text-transform: none;
 }
 
+.hero-subtitle-sub {
+    display: block;
+    margin-top: 0.8rem;
+    font-size: 0.7em;
+    opacity: 0.9;
+}
+
 .section-tag {
     font-size: 1.4rem;
     font-weight: 600;
@@ -572,42 +570,20 @@ ul {
     margin-top: var(--space-l);
 }
 
-.hero-slider.side-by-side {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    /* Visible gap between photos */
-    height: 600px;
-    position: relative;
-}
-
-.side-by-side .slide {
-    position: relative;
+.hero-image-single {
     width: 100%;
-    height: 100%;
-    opacity: 1;
-    filter: blur(10px) grayscale(50%);
-    transition: all 1s ease;
-    z-index: 1;
+    height: 650px;
+    position: relative;
+    overflow: hidden;
 }
 
-.side-by-side .slide.slide-active {
-    filter: blur(0) grayscale(0);
-    z-index: 2;
-}
-
-.side-by-side .slide img {
+.hero-image-single img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border: none;
-    /* Borders removed */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-}
-
-/* Removed scrim to eliminate the "double frame" background effect */
-.hero-slider-wrapper::after {
-    display: none;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+    /* Soft premium shadow */
+    border: 1px solid rgba(135, 122, 112, 0.05);
 }
 
 .hero-slider {
@@ -670,19 +646,7 @@ ul {
 .values {
     background-color: var(--bg-color);
     position: relative;
-    padding: 4rem 0;
-    /* Reduced gap after separator */
-}
-
-/* Subtle separator */
-.values::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 15%;
-    right: 15%;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--secondary), transparent);
+    padding: 0;
 }
 
 .values-header {
@@ -738,13 +702,19 @@ ul {
 }
 
 .value-icon {
-    width: 32px;
-    height: 32px;
+    width: 50px;
+    height: 50px;
     color: inherit;
     stroke: currentColor;
     stroke-width: 2px;
     fill: none;
     display: block;
+}
+
+.custom-icon {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
 }
 
 .value-item:hover .value-icon-wrapper {
@@ -993,8 +963,12 @@ ul {
 /* Video Section */
 .video-section {
     background-color: transparent;
-    padding: var(--space-s) 0 0 0;
-    /* Reduced bottom gap */
+    padding: 0;
+}
+
+.video-section .container {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 }
 
 .video-section .section-title {
@@ -1067,7 +1041,7 @@ ul {
 .how-i-work {
     background-color: var(--bg-color);
     overflow: hidden;
-    padding: var(--space-xl) 0;
+    padding: 0;
 }
 
 .how-i-work-wrapper {
@@ -1100,22 +1074,10 @@ ul {
 }
 
 .image-decoration {
-    position: absolute;
-    top: -20px;
-    left: -20px;
-    width: 100px;
-    height: 100px;
-    border-top: 2px solid var(--secondary);
-    border-left: 2px solid var(--secondary);
-    z-index: 1;
+    display: none;
 }
 
-.decorated-image.image-box .image-decoration {
-    left: auto;
-    right: -20px;
-    border-left: none;
-    border-right: 2px solid var(--secondary);
-}
+
 
 /* Hero Section */
 .hero-container {
@@ -1302,8 +1264,8 @@ ul {
 /* Intro Meeting Section */
 .intro-meeting {
     position: relative;
-    padding: 2rem 0;
-    /* Reduced from space-xl */
+    padding: 1rem 0 2rem 0;
+    /* Reduced top padding from 2rem to 1rem */
     background-color: #ffffff;
     /* Section background to white */
     overflow: hidden;
@@ -1374,8 +1336,6 @@ ul {
     /* Slightly reduced padding */
     background: radial-gradient(circle at center, var(--secondary) 0%, #fdfdfb 100%);
     /* Gradient using secondary color */
-    border: 1px solid rgba(135, 122, 112, 0.1);
-    box-shadow: 0 30px 60px rgba(135, 122, 112, 0.05);
     position: relative;
     overflow: hidden;
     /* For blobs */
@@ -1532,11 +1492,12 @@ ul {
     position: relative;
     z-index: 1;
     background-image: url('Obrazky/Hlavni/foto-10-o-mne.jpg');
-    background-size: cover;
-    background-position: right top;
+    background-size: 100% auto;
+    background-position: right 10%;
+    background-repeat: no-repeat;
     background-attachment: fixed;
-    padding: 2rem 0;
-    min-height: 40vh;
+    padding: 1rem 0;
+    min-height: 35vh;
     display: flex;
     align-items: center;
 }
@@ -1782,7 +1743,7 @@ ul {
 }
 
 .footer-desktop-image {
-    flex: 0 0 220px;
+    flex: 0 0 170px;
     height: 280px;
     overflow: visible;
     /* Changed from hidden to show decoration */
@@ -1877,10 +1838,48 @@ ul {
 }
 
 /* Mobile Adjustments */
-@media (max-width: 1024px) {
+@media (max-width: 1280px) {
     .container {
         width: 90%;
     }
+
+    .menu-toggle {
+        display: block;
+        z-index: 1001;
+        /* Must be higher than main-nav z-index */
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 400px;
+        /* Specific width instead of 80% */
+        max-width: 85%;
+        /* Fallback for very small screens */
+        height: 100vh;
+        background: white;
+        z-index: 1000;
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 4rem;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
+        /* Subtle shadow on the left */
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .main-nav.active {
+        right: 0;
+    }
+}
+
+@media (max-width: 1024px) {
 
     .hero-container {
         grid-template-columns: 1fr;
@@ -1960,32 +1959,8 @@ ul {
         /* Hide massive decorative quotes to prevent overflow */
     }
 
-    .menu-toggle {
-        display: block;
-    }
-
     .hero-slider {
         height: 380px;
-    }
-
-    .main-nav {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        height: 100vh;
-        background: white;
-        z-index: 999;
-        transition: var(--transition);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 4rem;
-    }
-
-    .nav-list {
-        flex-direction: column;
-        gap: 2rem;
     }
 
     .main-nav.active {
@@ -2038,18 +2013,23 @@ ul {
         height: 200px;
     }
 
+    .footer-desktop-image {
+        display: block;
+        order: 2;
+        margin: 1rem auto 0;
+        width: 90%;
+        max-width: 380px;
+        height: auto;
+    }
+
     .footer-grid {
         grid-template-columns: 1fr;
         gap: var(--space-m);
-    }
-
-    .footer-desktop-image {
-        display: none;
-        /* Hide column photo on mobile */
+        order: 1;
     }
 
     .footer-bg-image {
-        display: block !important;
+        display: none !important;
     }
 
     .footer-bg-image::after {
@@ -2083,9 +2063,10 @@ ul {
 
     /* Mobile Background Adjustments */
     .about-brief {
+        background-size: cover;
         background-position: left center;
         background-attachment: scroll;
-        /* Fixed background can be buggy on mobile */
+        background-repeat: no-repeat;
     }
 }
 

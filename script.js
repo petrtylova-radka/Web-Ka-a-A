@@ -14,17 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Hero Slider Side-by-Side Toggle
-    const heroSlides = document.querySelectorAll('.hero-slider.side-by-side .slide');
-    if (heroSlides.length === 2) {
-        let activeIdx = 0;
-        const rotateHeroSlider = () => {
-            heroSlides[activeIdx].classList.remove('slide-active');
-            activeIdx = (activeIdx + 1) % 2;
-            heroSlides[activeIdx].classList.add('slide-active');
-        };
-        setInterval(rotateHeroSlider, 4000);
-    }
+
 
     // About Section Slider Automatic Rotation
     const aboutSlides = document.querySelectorAll('.about-slider .about-slide');

@@ -323,9 +323,9 @@ ul {
 /* Hero Section Redesign */
 .hero {
     position: relative;
-    padding-top: 10rem;
+    padding-top: 7rem;
     padding-bottom: 4rem;
-    background: linear-gradient(to right, #ffffff 0%, #f9f9f9 25%, rgba(249, 249, 249, 0) 60%), url('Obrazky/Hlavni/foto-hero.jpg');
+    background: linear-gradient(to right, #ffffff 0%, #f9f9f9 35%, rgba(249, 249, 249, 0) 75%), url('Obrazky/Hlavni/foto-hero.jpg');
     background-size: contain;
     background-position: right center;
     background-repeat: no-repeat;
@@ -347,14 +347,77 @@ ul {
     position: relative;
 }
 
-.hero-header-box {
+.mobile-only {
+    display: none;
+}
+
+.desktop-only {
+    display: block;
+}
+
+@media (max-width: 991px) {
+    .desktop-only {
+        display: none !important;
+    }
+
+    .mobile-only {
+        display: block !important;
+    }
+}
+
+.hero-mobile-image {
+    display: none;
+}
+
+.hero-badge-wrapper {
     position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 20;
-    width: 70%;
+    bottom: 60px;
+    right: 5%;
+    width: 420px;
+    z-index: 100;
+}
+
+.hero-name-badge {
+    position: relative;
+    z-index: 10;
+    perspective: 1000px;
+    width: 100%;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
     text-align: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    cursor: pointer;
+    display: flex;
+}
+
+.hero-name-badge:hover .flip-card-inner,
+.flip-card-inner.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    padding: 1.8rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 140px;
 }
 
 /* Floating blob on the left */
@@ -384,50 +447,6 @@ ul {
     }
 }
 
-.hero-name-badge {
-    position: relative;
-    z-index: 10;
-    perspective: 1000px;
-    /* Add perspective for 3D effect */
-    width: 100%;
-}
-
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-style: preserve-3d;
-    cursor: pointer;
-    min-height: 80px;
-    /* Ensure enough height for back side */
-    display: flex;
-}
-
-.hero-name-badge:hover .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-.flip-card-front,
-.flip-card-back {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-    padding: 2.2rem 2.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 .flip-card-front {
     z-index: 2;
 }
@@ -443,34 +462,31 @@ ul {
 .hero-name {
     display: block;
     font-family: var(--font-body);
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     font-weight: 600;
     color: var(--text-color);
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.3rem;
 }
 
 .hero-role {
     display: block;
     font-family: var(--font-body);
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 500;
     letter-spacing: 0.15em;
     color: var(--text-color);
-    opacity: 0.7;
+    opacity: 0.8;
     text-transform: uppercase;
 }
 
-.hero-title {
+.hero-title-badge {
     margin: 0 !important;
-    /* Force no margin */
     padding: 0 !important;
-    /* Force no padding */
-    line-height: 1.3 !important;
-    /* Tighten line height for better centering */
-    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    line-height: 1.2 !important;
+    font-size: 1.1rem;
     color: var(--text-color);
-    text-transform: none;
     text-align: center;
+    font-family: var(--font-body);
 }
 
 .text-highlight {
@@ -527,6 +543,7 @@ ul {
 .hero-quote-wrapper {
     position: relative;
     padding: var(--space-s) 0;
+    margin-top: var(--space-l);
     margin-bottom: 0;
 }
 
@@ -546,6 +563,10 @@ ul {
     padding: var(--space-xs) 0;
     display: block;
     line-height: 1.6;
+}
+
+.hero .custom-quote {
+    line-height: 1.2;
 }
 
 .custom-quote::before {
@@ -977,30 +998,19 @@ ul {
     margin-right: auto;
 }
 
-.video-placeholder {
+.video-container-inner {
     width: 85%;
     max-width: 900px;
-    aspect-ratio: 16/9;
-    background: var(--accent-beige);
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-s);
-    cursor: pointer;
-    position: relative;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    background: #000;
 }
 
-.play-btn-wrapper {
-    width: 80px;
-    height: 80px;
-    background: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2.5rem;
-    color: var(--primary);
+.homepage-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: none;
 }
 
 /* Shared Layout & Components */
@@ -1195,6 +1205,21 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Style for dots - used in Jak pracuji and For Companies sections */
+.how-i-work .method-icon,
+.for-companies .method-icon {
+    width: 14px;
+    height: 14px;
+    background-color: var(--secondary);
+    border-radius: 50%;
+    margin-top: 0.45rem;
+    display: block;
+}
+
+.method-icon i {
+    display: flex;
 }
 
 .method-content p {
@@ -1892,11 +1917,11 @@ ul {
     }
 
     .hero-name-badge {
-        position: absolute;
-        bottom: 2rem;
-        left: 1rem;
-        right: 1rem;
-        margin: 0;
+        position: relative;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
         padding: 1.5rem;
         z-index: 10;
         background: rgba(255, 255, 255, 0.6);
@@ -1908,7 +1933,7 @@ ul {
     }
 
     .hero-subtitle {
-        text-align: center;
+        text-align: left;
     }
 
     .footer-layout-wrapper {
@@ -2013,6 +2038,16 @@ ul {
         height: 200px;
     }
 
+    .levitate-center {
+        font-size: 1.6rem !important;
+        padding: 1.2rem 2rem !important;
+    }
+
+    .step-num {
+        text-align: left;
+        margin-right: auto;
+    }
+
     .footer-desktop-image {
         display: block;
         order: 2;
@@ -2044,10 +2079,11 @@ ul {
     .flex-buttons {
         flex-direction: column;
         gap: 1rem;
-        align-items: stretch;
-        max-width: 400px;
-        margin-left: auto;
-        margin-right: auto;
+        align-items: flex-start;
+        /* Align buttons to start */
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     .hero-buttons .btn,
@@ -2067,6 +2103,103 @@ ul {
         background-position: left center;
         background-attachment: scroll;
         background-repeat: no-repeat;
+    }
+}
+
+@media (max-width: 991px) {
+    .hero {
+        background: #f9f9f9;
+        /* Remove background image on mobile as we show it as element */
+        padding-top: 4.5rem;
+        padding-bottom: 2rem;
+    }
+
+    .hero-container {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .hero-content-wrapper {
+        width: 100%;
+    }
+
+    .hero-subtitle {
+        margin-bottom: 1rem;
+    }
+
+    .hero-buttons {
+        justify-content: flex-start;
+        margin-bottom: 1rem;
+    }
+
+    .hero-quote-wrapper {
+        margin-top: 1rem !important;
+    }
+
+    .hero-mobile-image {
+        display: block;
+        width: 100%;
+        height: 280px;
+        /* Fixed height for crop effect */
+        object-fit: cover;
+        object-position: top;
+        /* Crop to top half */
+        margin-bottom: 0px;
+        /* Reset margin, we use negative margin on badge instead */
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        z-index: 5;
+    }
+
+    .hero-badge-wrapper {
+        position: relative;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        max-width: 100%;
+        margin-top: -85px;
+        /* Much deeper overlap of the image */
+        z-index: 10;
+        padding: 0 5px;
+        margin-bottom: 2.5rem;
+        /* Space before buttons */
+    }
+
+    .hero-badge-wrapper .flip-card-front,
+    .hero-badge-wrapper .flip-card-back {
+        background: rgba(255, 255, 255, 0.05) !important;
+        /* Pure glass, almost fully transparent */
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    }
+
+    .video-container-inner {
+        width: 100% !important;
+        border-radius: 0;
+    }
+
+    .for-companies {
+        padding-top: 1.5rem;
+    }
+
+    .for-companies .grid-2-rev .image-box {
+        margin-bottom: 1rem !important;
+    }
+
+    .for-companies .text-box {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .for-companies .btn {
+        align-self: center;
+        width: auto !important;
+        min-width: 250px;
+        margin-top: 1.5rem;
     }
 }
 

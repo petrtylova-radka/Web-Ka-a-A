@@ -147,6 +147,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentPath = window.location.pathname;
     const page = currentPath.split("/").pop();
 
+    // Auto-rotate Hero Badge on Mobile
+    const heroBadges = document.querySelectorAll('.hero-badge-wrapper .flip-card-inner');
+    if (heroBadges.length > 0) {
+        setInterval(() => {
+            if (window.innerWidth <= 991) {
+                heroBadges.forEach(badge => {
+                    badge.classList.toggle('is-flipped');
+                });
+            }
+        }, 5000);
+    }
+
     document.querySelectorAll('.nav-list a').forEach(link => {
         const linkHref = link.getAttribute('href');
         if (linkHref === page || (page === '' && linkHref === 'index.html')) {

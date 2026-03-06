@@ -1605,6 +1605,13 @@ ul {
 
 .faq-item {
     border-bottom: 1px solid var(--secondary);
+    overflow: hidden;
+    list-style: none !important;
+}
+
+.faq-item::before,
+.faq-item::after {
+    display: none !important;
 }
 
 .faq-question {
@@ -1622,9 +1629,11 @@ ul {
     color: var(--text-color);
     transition: var(--transition);
     /* Odstranění výchozích značek pro Safari */
-    list-style: none;
+    list-style: none !important;
+    list-style-type: none !important;
     appearance: none;
     -webkit-appearance: none;
+    user-select: none;
 }
 
 .faq-question::-webkit-details-marker {

@@ -58,6 +58,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    overflow-x: hidden;
 }
 
 body {
@@ -66,7 +67,33 @@ body {
     line-height: 1.6;
     color: #222222;
     background-color: var(--bg-color);
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+main,
+section {
     overflow-x: hidden;
+    /* Zachytí AOS a další přetékající prvky */
+    width: 100%;
+}
+
+*,
+*::before,
+*::after {
+    max-width: 100%;
+    /* Změněno z 100vw na 100%, aby nebylo započítáno menu mimo obrazovku */
+}
+
+/* Oprava přetékání pro AOS animace */
+[data-aos] {
+    pointer-events: none;
+}
+
+.aos-animate {
+    pointer-events: auto;
 }
 
 h1,
@@ -318,6 +345,10 @@ ul {
     background: none;
     border: none;
     cursor: pointer;
+    padding: 10px;
+    margin-right: -10px;
+    z-index: 1001;
+    /* Zvýšení z-indexu */
 }
 
 /* Hero Section Redesign */
@@ -435,6 +466,14 @@ ul {
     pointer-events: none;
     border-radius: 50%;
     animation: floating-blob 25s infinite alternate ease-in-out;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .hero-content-wrapper::before {
+        display: none;
+        /* Skryje blob na mobilu, který může způsobovat přetečení */
+    }
 }
 
 @keyframes floating-blob {
@@ -1868,6 +1907,14 @@ ul {
         width: 90%;
     }
 
+    .container-nav {
+        padding: 1rem 0;
+    }
+
+    .logo img {
+        height: 70px;
+    }
+
     .menu-toggle {
         display: block;
         z-index: 1001;
@@ -1877,21 +1924,19 @@ ul {
     .main-nav {
         position: fixed;
         top: 0;
-        right: -100%;
-        width: 400px;
-        /* Specific width instead of 80% */
-        max-width: 85%;
-        /* Fallback for very small screens */
+        right: 0;
+        width: 320px;
+        max-width: 80%;
         height: 100vh;
         background: white;
         z-index: 1000;
         transition: var(--transition);
+        transform: translateX(100%);
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 4rem;
+        padding: 3rem 2rem;
         box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
-        /* Subtle shadow on the left */
     }
 
     .nav-list {
@@ -1900,7 +1945,7 @@ ul {
     }
 
     .main-nav.active {
-        right: 0;
+        transform: translateX(0);
     }
 }
 
@@ -1976,6 +2021,14 @@ ul {
         max-width: none;
     }
 
+    .container-nav {
+        padding: 0.8rem 0;
+    }
+
+    .logo img {
+        height: 65px;
+    }
+
 
 
     .hero-highlight::before,
@@ -1989,7 +2042,7 @@ ul {
     }
 
     .main-nav.active {
-        right: 0;
+        transform: translateX(0);
     }
 
     .grid-2,
@@ -2207,7 +2260,7 @@ ul {
 .hamburger {
     display: block;
     width: 30px;
-    height: 2px;
+    height: 3px;
     background: var(--primary);
     position: relative;
     transition: var(--transition);
@@ -2218,17 +2271,17 @@ ul {
     content: '';
     position: absolute;
     width: 100%;
-    height: 2px;
+    height: 3px;
     background: var(--primary);
     transition: var(--transition);
 }
 
 .hamburger::before {
-    top: -8px;
+    top: -10px;
 }
 
 .hamburger::after {
-    bottom: -8px;
+    bottom: -10px;
 }
 
 .menu-toggle.active .hamburger {

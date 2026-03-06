@@ -1621,6 +1621,14 @@ ul {
     cursor: pointer;
     color: var(--text-color);
     transition: var(--transition);
+    /* Odstranění výchozích značek pro Safari */
+    list-style: none;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.faq-question::-webkit-details-marker {
+    display: none;
 }
 
 .faq-question:hover {

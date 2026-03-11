@@ -156,6 +156,7 @@ p {
     margin-bottom: var(--space-m);
     text-transform: none;
     /* First letter capital only */
+    color: var(--primary);
 }
 
 .section-subtitle {
@@ -332,6 +333,7 @@ ul {
     /* Match standard button height */
     color: var(--text-color) !important;
     font-weight: 600 !important;
+    text-transform: uppercase;
 }
 
 .cta-menu:hover {
@@ -356,7 +358,7 @@ ul {
     position: relative;
     padding-top: 7rem;
     padding-bottom: 4rem;
-    background: linear-gradient(to right, #ffffff 0%, #f9f9f9 35%, rgba(249, 249, 249, 0) 75%), url('Obrazky/Hlavni/foto-hero.jpg');
+    background: linear-gradient(to right, #ffffff 0%, #f9f9f9 35%, rgba(249, 249, 249, 0) 75%), url('Obrazky/Hlavni/foto-hero-01.jpg');
     background-size: contain;
     background-position: right center;
     background-repeat: no-repeat;
@@ -515,7 +517,7 @@ ul {
     letter-spacing: 0.15em;
     color: var(--text-color);
     opacity: 0.8;
-    text-transform: uppercase;
+    text-transform: none;
 }
 
 .hero-title-badge {
@@ -572,7 +574,7 @@ ul {
     font-size: 1.4rem;
     font-weight: 600;
     letter-spacing: 0.15em;
-    text-transform: uppercase;
+    text-transform: none;
     color: var(--primary);
     margin-bottom: 4rem !important;
     /* Balanced middle ground */
@@ -602,6 +604,13 @@ ul {
     padding: var(--space-xs) 0;
     display: block;
     line-height: 1.6;
+}
+
+.for-companies .custom-quote,
+.for-companies-intro .custom-quote {
+    max-width: 50ch;
+    font-size: clamp(1.2rem, 2vw, 1.45rem);
+    margin-bottom: 1rem;
 }
 
 .hero .custom-quote {
@@ -808,32 +817,13 @@ ul {
 }
 
 .value-title {
-    font-size: 1.25rem;
-    /* Smaller than section-title (h2) */
+    font-size: 1.3rem;
     font-weight: 500;
     margin-bottom: var(--space-s);
     color: var(--text-color);
     line-height: 1.3;
     font-family: var(--font-heading);
     /* Keeping it elegant with serif */
-    position: relative;
-    padding-bottom: var(--space-s);
-}
-
-.value-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30px;
-    height: 1px;
-    background-color: var(--secondary);
-    transition: var(--transition);
-}
-
-.value-item:hover .value-title::after {
-    width: 60px;
 }
 
 .value-text {
@@ -872,7 +862,7 @@ ul {
     border: 1px solid var(--secondary);
     position: relative;
     background: radial-gradient(circle at 30% 30%, #fff 0%, #f9f8f6 100%);
-    text-transform: uppercase;
+    text-transform: none;
     letter-spacing: 0.05em;
 }
 
@@ -1095,7 +1085,7 @@ ul {
 
 .how-i-work-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.8fr 1.2fr;
     gap: var(--space-xl);
     align-items: center;
     position: relative;
@@ -1186,7 +1176,7 @@ ul {
 
 .badge-text {
     font-size: 0.8rem;
-    text-transform: uppercase;
+    text-transform: none;
     letter-spacing: 0.1em;
     color: var(--text-color);
     margin-top: 0.5rem;
@@ -1204,7 +1194,7 @@ ul {
 .promo-tag {
     display: block;
     font-size: 0.85rem;
-    text-transform: uppercase;
+    text-transform: none;
     letter-spacing: 0.2em;
     color: var(--text-color);
     /* Ensure tags are also #222222 */
@@ -1234,6 +1224,12 @@ ul {
 .method-item:hover {
     background: rgba(135, 122, 112, 0.05);
     transform: translateX(5px);
+}
+
+.how-i-work .method-item:hover,
+.for-companies .method-item:hover {
+    background: transparent;
+    transform: none;
 }
 
 .method-icon {
@@ -1305,7 +1301,7 @@ ul {
 }
 
 .for-companies .grid-2-rev {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.2fr 0.8fr;
     gap: var(--space-xl);
 }
 
@@ -1423,7 +1419,7 @@ ul {
 .promo-tag {
     display: inline-block;
     font-size: 0.85rem;
-    text-transform: uppercase;
+    text-transform: none;
     letter-spacing: 0.2em;
     color: var(--primary);
     margin-bottom: 2rem;
@@ -1470,6 +1466,11 @@ ul {
     border: 1px solid rgba(135, 122, 112, 0.1);
     transition: none;
     padding: var(--space-m);
+}
+
+.reference-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
 }
 
 .reference-card:hover {
@@ -1530,6 +1531,19 @@ ul {
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-l);
     margin-top: var(--space-m);
+}
+
+.process-steps-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-l);
+    margin-top: var(--space-m);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
 }
 
 .step {
@@ -1720,7 +1734,7 @@ ul {
     font-weight: 600;
     color: var(--text-color);
     font-size: 0.8rem;
-    text-transform: uppercase;
+    text-transform: none;
     letter-spacing: 2px;
     margin-bottom: 1.5rem;
     background: var(--secondary);
@@ -1812,7 +1826,7 @@ ul {
 
 .footer-layout-wrapper {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 4rem;
 }
 
@@ -1824,20 +1838,22 @@ ul {
 }
 
 .footer-desktop-image {
-    flex: 0 0 170px;
-    height: 280px;
-    overflow: visible;
-    /* Changed from hidden to show decoration */
+    flex: 0 0 auto;
+    height: 250px;
     position: relative;
 }
 
-.footer-desktop-image img {
-    width: 100%;
+.footer-desktop-image .image-inner {
     height: 100%;
-    object-fit: cover;
-    object-position: top center;
+    display: block;
+}
+
+.footer-desktop-image img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
     border: none;
-    /* Border removed to match image-inner style */
+    display: block;
 }
 
 .footer-col a:hover {
@@ -2005,8 +2021,8 @@ ul {
 
     .footer-desktop-image {
         flex: none;
-        width: 160px;
-        height: 200px;
+        width: auto;
+        height: 160px;
         margin: 0 auto;
     }
 
@@ -2079,6 +2095,11 @@ ul {
         width: 100%;
     }
 
+    /* V intro sekci Pro firmy skryjeme foto z gridu na mobilu – bude za tlačítkem */
+    .for-companies-intro .grid-2-rev .image-box {
+        display: none;
+    }
+
     .values-grid {
         grid-template-columns: 1fr;
     }
@@ -2090,6 +2111,16 @@ ul {
     .process-steps {
         grid-template-columns: 1fr;
         gap: var(--space-m);
+    }
+
+    .process-steps-4 {
+        grid-template-columns: 1fr;
+        gap: var(--space-m);
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
 
@@ -2122,8 +2153,8 @@ ul {
         display: block;
         order: 2;
         margin: 1rem auto 0;
-        width: 90%;
-        max-width: 380px;
+        width: 45%;
+        max-width: none;
         height: auto;
     }
 
@@ -2313,4 +2344,632 @@ ul {
 .menu-toggle.active .hamburger::after {
     transform: rotate(-45deg);
     bottom: 0;
+}
+
+/* --- About Me Page --- */
+.about-me-page {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    padding: 119px 0 6rem;
+    background: url('Obrazky/O-mne/foto-09-o-mne.jpg') no-repeat right bottom;
+    background-size: auto calc(100vh - 100px);
+    /* Výška fotky se přizpůsobí obrazovce mínus výška menu */
+    background-attachment: fixed;
+    background-color: #fdfdfb;
+}
+
+/* Readability filter for the background photo */
+.about-me-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(254, 255, 255, 0.98) 0%, rgba(254, 255, 255, 0.85) 45%, rgba(254, 255, 255, 0.1) 100%);
+    z-index: 1;
+}
+
+.about-me-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: var(--max-width);
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 2rem;
+    /* Redukce výchozí mezery od .container */
+}
+
+.about-me-content-box {
+    background: transparent;
+    backdrop-filter: none;
+    padding: 2rem 0;
+    /* Menší padding na desktopu pro čistý vzhled úměrný menu */
+    box-shadow: none;
+    border: none;
+    max-width: 750px;
+    margin-left: 0;
+}
+
+.about-me-content-box h1,
+.for-companies-intro h1,
+.pricing-intro h1,
+.references-page h1 {
+    font-size: var(--h1);
+    margin-bottom: 2rem;
+    color: var(--primary);
+}
+
+.about-me-lead {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 2.5rem 0 1.5rem;
+    font-family: var(--font-heading);
+    color: var(--text-color);
+}
+
+.about-me-text-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+.about-me-highlight-box {
+    margin: 3rem 0;
+    padding: 2.5rem;
+    background: rgba(196, 195, 208, 0.1);
+    border-left: 4px solid var(--secondary);
+}
+
+.about-me-highlight-box h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    text-transform: none;
+    letter-spacing: 0.1em;
+}
+
+.about-me-list {
+    list-style: none;
+    padding: 0;
+}
+
+.about-me-list li {
+    position: relative;
+    padding-left: 1.8rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.about-me-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--secondary);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.check-list {
+    list-style: none;
+    padding: 0;
+}
+
+.check-list li {
+    position: relative;
+    padding-left: 1.8rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.check-list li::before {
+    content: '\F26E';
+    font-family: bootstrap-icons;
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: var(--secondary);
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.value-title-no-line::after {
+    display: none !important;
+}
+
+.value-title-no-line {
+    padding-bottom: 0 !important;
+}
+
+.about-me-footer-note {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(135, 122, 112, 0.2);
+    font-style: italic;
+    opacity: 0.8;
+    font-size: 1rem;
+}
+
+@media (max-width: 1200px) {
+    .about-me-page {
+        background-size: cover;
+        background-position: center;
+    }
+
+    .about-me-page::before {
+        background: rgba(255, 255, 255, 0.6);
+    }
+
+    .about-me-container {
+        justify-content: center;
+    }
+
+    .about-me-content-box {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 991px) {
+    .about-me-content-box {
+        background: transparent;
+        backdrop-filter: none;
+        padding: 3rem 2rem;
+        box-shadow: none;
+        border: none;
+    }
+
+    /* Skrytí pozadí na mobilu/tabletu – foto se zobrazí jako obrázek pod textem */
+    .about-me-page {
+        background-image: none;
+    }
+
+    .about-me-page::before {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-me-page {
+        padding-top: 119px;
+        background-attachment: fixed;
+        background-position: center 119px;
+        background-size: auto calc(100vh - 119px);
+    }
+
+    .about-me-container {
+        width: 90%;
+    }
+
+    .about-me-content-box {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .about-me-lead {
+        font-size: 1.3rem;
+    }
+}
+
+/* --- How I Work Page --- */
+.how-i-work-page {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    padding: 119px 0 6rem;
+    background: url('Obrazky/Hlavni/foto-07-o-mne.jpg') no-repeat right bottom;
+    background-size: auto calc(100vh - 100px);
+    background-attachment: fixed;
+    background-color: #fdfdfb;
+}
+
+/* Readability filter for the background photo */
+.how-i-work-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(254, 255, 255, 0.98) 0%, rgba(254, 255, 255, 0.85) 45%, rgba(254, 255, 255, 0.1) 100%);
+    z-index: 1;
+}
+
+.how-i-work-page-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: var(--max-width);
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 2rem;
+    /* Redukce výchozí mezery od .container */
+}
+
+.how-i-work-page-content {
+    background: transparent;
+    backdrop-filter: none;
+    padding: 2rem 0;
+    box-shadow: none;
+    border: none;
+    max-width: 800px;
+    margin-left: 0;
+}
+
+.how-i-work-page-content h1 {
+    font-size: var(--h1);
+    margin-bottom: 2rem;
+    color: var(--primary);
+}
+
+.how-i-work-page-content h2 {
+    font-family: var(--font-heading);
+    color: var(--primary);
+    margin: 3.5rem 0 1.5rem;
+    font-size: 2rem;
+    border-bottom: 1px solid rgba(135, 122, 112, 0.2);
+    padding-bottom: 0.5rem;
+}
+
+.how-i-work-page-content h3 {
+    font-family: var(--font-heading);
+    color: var(--text-color);
+    margin: 2.5rem 0 1rem;
+    font-size: 1.4rem;
+}
+
+.how-i-work-page-content p {
+    margin-bottom: 1.2rem;
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+.how-i-work-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.how-i-work-list li {
+    position: relative;
+    padding-left: 1.8rem;
+    margin-bottom: 1rem;
+    font-size: 1.15rem;
+    line-height: 1.6;
+}
+
+.how-i-work-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--secondary);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.how-i-work-highlight {
+    background: rgba(196, 195, 208, 0.1);
+    padding: 2rem;
+    margin: 2rem 0;
+    border-left: 4px solid var(--secondary);
+}
+
+.warning-box {
+    margin-top: 4rem;
+    padding: 2.5rem;
+    background: rgba(214, 84, 84, 0.05);
+    border-left: 4px solid #d65454;
+}
+
+.warning-box h3 {
+    color: #d65454;
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 1200px) {
+    .how-i-work-page {
+        background-size: cover;
+        background-position: center;
+    }
+
+    .how-i-work-page::before {
+        background: rgba(255, 255, 255, 0.7);
+    }
+
+    .how-i-work-page-container {
+        justify-content: center;
+    }
+
+    .how-i-work-page-content {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 991px) {
+    .how-i-work-page-content {
+        background: transparent;
+        backdrop-filter: none;
+        padding: 3rem 2rem;
+        box-shadow: none;
+        border: none;
+    }
+
+    /* Skrytí pozadí na mobilu/tabletu – foto se zobrazí jako obrázek pod textem */
+    .how-i-work-page {
+        background-image: none;
+    }
+
+    .how-i-work-page::before {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .how-i-work-page {
+        padding-top: 119px;
+        background-attachment: fixed;
+        background-position: center 119px;
+        background-size: auto calc(100vh - 119px);
+    }
+
+    .how-i-work-page-container {
+        width: 90%;
+    }
+
+    .how-i-work-page-content {
+        padding: 2.5rem 1.5rem;
+    }
+}
+
+/* Fotka zobrazená jako obrázek na mobilu/tabletu pod textem */
+.page-mobile-photo {
+    display: none;
+    /* Skryto na desktopu */
+}
+
+.page-mobile-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 991px) {
+    .page-mobile-photo {
+        display: block;
+        margin-top: 0;
+    }
+}
+
+/* --- Kontaktní stránka --- */
+.contact-page {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    padding: 119px 0 6rem;
+    background: url('Obrazky/Hlavni/foto-08-o-mne.jpg') no-repeat right bottom;
+    background-size: auto calc(100vh - 100px);
+    background-attachment: fixed;
+    background-color: #fdfdfb;
+}
+
+.contact-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(254, 255, 255, 0.98) 0%, rgba(254, 255, 255, 0.85) 45%, rgba(254, 255, 255, 0.1) 100%);
+    z-index: 1;
+}
+
+.contact-page-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: var(--max-width);
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 2rem;
+}
+
+.contact-page-content {
+    background: transparent;
+    backdrop-filter: none;
+    padding: 2rem 0;
+    box-shadow: none;
+    border: none;
+    max-width: 800px;
+    margin-left: 0;
+}
+
+.contact-page-content h1 {
+    font-size: var(--h1);
+    margin-bottom: 2rem;
+    color: var(--primary);
+}
+
+.contact-page-content p.contact-lead {
+    margin-bottom: 2rem;
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+.contact-methods {
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+}
+
+.contact-method-item {
+    margin-bottom: 2.5rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--secondary);
+}
+
+.contact-method-item h3 {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-method-item h3 i {
+    color: var(--primary);
+}
+
+.contact-method-item a {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--primary);
+    transition: var(--transition);
+}
+
+.contact-method-item a:hover {
+    color: var(--primary-dark);
+}
+
+.contact-form-wrapper {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+}
+
+.contact-form-wrapper h2 {
+    font-family: var(--font-heading);
+    color: var(--primary);
+    margin: 3.5rem 0 1.5rem;
+    font-size: 2rem;
+    border-bottom: 1px solid rgba(135, 122, 112, 0.2);
+    padding-bottom: 0.5rem;
+}
+
+.contact-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.contact-form .form-row {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.contact-form .form-row .form-group {
+    flex: 1;
+}
+
+@media (max-width: 576px) {
+    .contact-form .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid rgba(135, 122, 112, 0.3);
+    background: #ffffff;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(135, 122, 112, 0.1);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-consent {
+    font-size: 0.85rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-bottom: 2rem !important;
+}
+
+.btn-submit {
+    display: block;
+    margin-left: auto;
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 1200px) {
+    .contact-page {
+        background-size: cover;
+        background-position: center;
+    }
+
+    .contact-page::before {
+        background: rgba(255, 255, 255, 0.7);
+    }
+
+    .contact-page-container {
+        justify-content: center;
+    }
+
+    .contact-page-content {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 991px) {
+    .contact-page-content {
+        background: transparent;
+        backdrop-filter: none;
+        padding: 3rem 2rem;
+        box-shadow: none;
+        border: none;
+    }
+
+    /* Skrytí pozadí na mobilu/tabletu – foto se zobrazí jako obrázek pod textem */
+    .contact-page {
+        background-image: none;
+    }
+
+    .contact-page::before {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-page {
+        padding-top: 119px;
+        background-attachment: fixed;
+        background-position: center 119px;
+        background-size: auto calc(100vh - 119px);
+    }
+
+    .contact-page-container {
+        width: 90%;
+    }
+
+    .contact-page-content {
+        padding: 2.5rem 1.5rem;
+    }
 }

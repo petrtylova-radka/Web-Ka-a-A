@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.classList.toggle('active');
 
             const isExpanded = card.classList.contains('active');
-            toggle.setAttribute('aria-label', isExpanded ? 'Zobrazit méně' : 'Zobrazit více');
+            toggle.setAttribute('aria-label', isExpanded ? 'Zobrazit méně' : 'Číst více');
             if (span) {
                 span.textContent = isExpanded ? 'Zobrazit méně' : 'Číst více';
             }

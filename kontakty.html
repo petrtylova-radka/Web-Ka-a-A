@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontakty | Kateřina Axmannová – koučka a mentorka</title>
+    <title>Kontakt a rezervace setkání | Kateřina Axmannová</title>
     <meta name="description"
-        content="Spojte se se mnou. Nabízím individuální koučink, mentoring a programy pro firmy. Poptávkový formulář a kontaktní údaje.">
+        content="Máte otázky nebo chcete začít spolupráci? Spojte se se mnou přes formulář, telefonicky či e-mailem a můžeme si domluvit nezávazné úvodní setkání zdarma.">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://axmannova.cz/kontakty.html">
+    <link rel="canonical" href="https://katerinaaxmannova.cz/kontakty">
 
     <!-- Favicon -->
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -18,8 +18,8 @@
     <meta property="og:title" content="Kontakty | Kateřina Axmannová">
     <meta property="og:description"
         content="Máte zájem o úvodní setkání zdarma, nebo se mě chcete na něco zeptat? Můžete využít kontakty níže, nebo formulář.">
-    <meta property="og:image" content="https://axmannova.cz/Obrazky/Hlavni/foto-hero-01.jpg">
-    <meta property="og:url" content="https://axmannova.cz/kontakty.html">
+    <meta property="og:image" content="https://katerinaaxmannova.cz/Obrazky/Hlavni/foto-hero-01.jpg">
+    <meta property="og:url" content="https://katerinaaxmannova.cz/kontakty>
     <meta property="og:type" content="website">
 
     <!-- Google Fonts -->
@@ -53,12 +53,12 @@
 
             <nav class="main-nav">
                 <ul class="nav-list">
-                    <li><a href="o-mne.html">O mně</a></li>
-                    <li><a href="sluzby.html">Služby</a></li>
-                    <li><a href="pro-firmy.html">Pro firmy</a></li>
-                    <li><a href="jak-pracuji.html">Jak pracuji</a></li>
-                    <li><a href="reference.html">Reference</a></li>
-                    <li><a href="kontakty.html" class="active cta-menu">Kontakty</a></li>
+                    <li><a href="/o-mne">O mně</a></li>
+                    <li><a href="/sluzby">Služby</a></li>
+                    <li><a href="/pro-firmy">Pro firmy</a></li>
+                    <li><a href="/jak-pracuji">Jak pracuji</a></li>
+                    <li><a href="/reference">Reference</a></li>
+                    <li><a href="/kontakty" class="active cta-menu">Kontakty</a></li>
                 </ul>
             </nav>
         </div>
@@ -90,13 +90,13 @@
                     <div class="contact-form-wrapper">
                         <h2>Poptávkový formulář</h2>
                         <!-- Formulář za pomoci služby formsubmit.co, která funguje i pro statické weby -->
-                        <form action="https://formsubmit.co/katerina@axmannova.cz" method="POST" class="contact-form">
+                        <form action="https://formsubmit.co/katerina@axmannova.cz" method="POST" class="contact-form" id="contact-form">
                             <!-- Custom form submit settings -->
-                            <input type="hidden" name="_subject" value="Nová poptávka z webu axmannova.cz">
+                            <input type="hidden" name="_subject" value="Nová poptávka z webu katerinaaxmannova.cz">
                             <input type="hidden" name="_template" value="table">
                             <!-- Odstranění captcha pro plynulejší UX, lze zapnout smazáním této řádky -->
                             <input type="hidden" name="_captcha" value="false">
-                            <input type="hidden" name="_next" value="https://axmannova.cz/">
+                            <input type="hidden" name="_next" value="https://katerinaaxmannova.cz/">
 
                             <div class="form-row">
                                 <div class="form-group">
@@ -126,6 +126,11 @@
                                     placeholder="Jak Vám mohu pomoci?"></textarea>
                             </div>
 
+                            <div class="form-group captcha-group">
+                                <label for="captcha">Kontrolní otázka: Kolik je <span id="captcha-question"></span>? *</label>
+                                <input type="number" id="captcha" name="Captcha_Odpověď" required placeholder="Napište výsledek">
+                            </div>
+
                             <div class="form-group form-consent">
                                 Odesláním formuláře souhlasíte se zpracováním osobních údajů pro účely vyřízení
                                 poptávky. Data nebudou poskytnuta třetí straně.
@@ -145,17 +150,8 @@
     </main>
 
     <footer class="main-footer">
-        <div class="footer-bg-image">
-            <img src="Obrazky/Hlavni/foto-09-paticka.jpg" alt="" role="presentation" loading="lazy">
-        </div>
         <div class="container footer-content">
             <div class="footer-layout-wrapper">
-                <div class="footer-desktop-image decorated-image">
-                    <div class="image-inner">
-                        <img src="Obrazky/Hlavni/foto-09-paticka.jpg" alt="Kateřina Axmannová" loading="lazy">
-                    </div>
-                    <div class="image-decoration"></div>
-                </div>
 
                 <div class="footer-grid">
                     <div class="footer-col">
@@ -167,6 +163,17 @@
                         </p>
                     </div>
                     <div class="footer-col">
+                        <h3>Navigace</h3>
+                        <ul class="footer-nav">
+                            <li><a href="/">Homepage</a></li>
+                            <li><a href="/o-mne">O mně</a></li>
+                            <li><a href="/sluzby">Služby</a></li>
+                            <li><a href="/pro-firmy">Pro firmy</a></li>
+                            <li><a href="/jak-pracuji">Jak pracuji</a></li>
+                            <li><a href="/reference">Reference</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
                         <h3>Ing. Kateřina Axmannová</h3>
                         <p>IČ: 24367401</p>
                         <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 1rem;">Sídlo: Na&nbsp;Výsluní 1727,
@@ -176,31 +183,23 @@
                             rejstříku
                             vedeném Městským úřadem Frýdlant&nbsp;n.&nbsp;Ostravicí.</p>
                     </div>
-                    <div class="footer-col">
-                        <h3>Navigace</h3>
-                        <ul class="footer-nav">
-                            <li><a href="o-mne.html">O mně</a></li>
-                            <li><a href="sluzby.html">Služby</a></li>
-                            <li><a href="pro-firmy.html">Pro firmy</a></li>
-                            <li><a href="jak-pracuji.html">Jak pracuji</a></li>
-                            <li><a href="reference.html">Reference</a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2026 Kateřina Axmannová. Všechna práva vyhrazena. | <a href="gdpr.html">Ochrana osobních
+                <p>&copy; 2026 Kateřina Axmannová. Všechna práva vyhrazena. | <a href="/gdpr">Ochrana osobních
                         údajů</a></p>
             </div>
         </div>
     </footer>
 
-    <!-- Cookie Banner Placeholder -->
+    <!-- Cookie Banner -->
     <div id="cookie-banner" class="cookie-banner hide">
+        <button id="cookie-close" class="cookie-close" aria-label="Zavřít">&times;</button>
         <div class="container container-cookie">
-            <p>Tento web používá soubory cookies pro zlepšení uživatelského zážitku.</p>
+            <p>Tento web používá soubory cookies pro zlepšení uživatelského zážitku a analýzu návštěvnosti.</p>
             <div class="cookie-btns">
+                <button id="cookie-necessary" class="btn btn-secondary btn-sm">Jen nezbytné</button>
                 <button id="cookie-accept" class="btn btn-primary btn-sm">Rozumím</button>
             </div>
         </div>
@@ -212,9 +211,9 @@
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Kateřina Axmannová – koučka a mentorka",
-      "image": "https://axmannova.cz/Obrazky/Hlavni/foto-hero-01.jpg",
-      "@id": "https://axmannova.cz/",
-      "url": "https://axmannova.cz/",
+      "image": "https://katerinaaxmannova.cz/Obrazky/Hlavni/foto-hero-01.jpg",
+      "@id": "https://katerinaaxmannova.cz/",
+      "url": "https://katerinaaxmannova.cz/",
       "telephone": "+420 777 339 611",
       "address": {
         "@type": "PostalAddress",

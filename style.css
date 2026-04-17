@@ -352,6 +352,8 @@ ul {
     margin-right: -10px;
     z-index: 1001;
     /* Zvýšení z-indexu */
+    align-items: center;
+    justify-content: center;
 }
 
 /* Hero Section Redesign */
@@ -359,7 +361,7 @@ ul {
     position: relative;
     padding-top: 7rem;
     padding-bottom: 2rem;
-    background: linear-gradient(to right, #ffffff 0%, #ffffff 35%, rgba(255, 255, 255, 0) 85%), url('Obrazky/Hlavni/foto-hero-01.jpg');
+    background: linear-gradient(to right, #ffffff 0%, #ffffff 40%, rgba(255, 255, 255, 0) 65%), url('Obrazky/Hlavni/foto-hero-01.jpg');
     background-size: 100% 100%, contain;
     background-position: left, right center;
     background-repeat: no-repeat;
@@ -465,9 +467,9 @@ ul {
 
 .hero-subtitle {
     font-family: var(--font-heading);
-    font-size: clamp(1.1rem, 2.2vw, 1.6rem);
-    /* Slightly smaller, unified size */
-    font-weight: normal;
+    font-size: clamp(1.6rem, 2vw, 1.85rem);
+    /* Further reduced max size for PC to match user request */
+    font-weight: 600;
     color: var(--text-color);
     margin-bottom: var(--space-m);
     line-height: 1.3;
@@ -560,6 +562,11 @@ ul {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+}
+
+.container-hero-intro {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
 }
 
 .hero-intro-buttons {
@@ -971,6 +978,43 @@ ul {
     border: none;
 }
 
+.video-play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.video-play-overlay:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.video-play-overlay .play-icon {
+    width: 30px;
+    height: 30px;
+    color: var(--primary-dark);
+    margin-left: 3px;
+    /* Visual center adjustment */
+}
+
+@media (max-width: 768px) {
+    .video-play-overlay {
+        display: none;
+    }
+}
+
 /* Shared Layout & Components */
 .grid-2 {
     display: grid;
@@ -1013,8 +1057,8 @@ ul {
 }
 
 .how-i-work-wrapper {
-    display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
+    display: flex;
+    justify-content: center;
     gap: var(--space-xl);
     align-items: center;
     position: relative;
@@ -1113,8 +1157,10 @@ ul {
 }
 
 .how-i-work-content {
+    max-width: 850px;
+    width: 100%;
     padding: var(--space-m) 0;
-    margin-left: 0;
+    margin: 0 auto;
     z-index: 5;
     position: relative;
 }
@@ -1145,8 +1191,8 @@ ul {
 .method-item {
     display: flex;
     gap: 1rem;
-    margin-bottom: 0.5rem;
-    padding: 0.5rem 0.75rem;
+    margin-bottom: 0.25rem;
+    padding: 0.25rem 0.75rem;
     transition: var(--transition);
 }
 
@@ -1203,13 +1249,15 @@ ul {
 /* Responsive How I Work */
 @media (max-width: 991px) {
     .how-i-work-wrapper {
-        grid-template-columns: 1fr;
         gap: var(--space-l);
     }
 
     .how-i-work-content {
         margin-left: 0;
-        padding: var(--space-m);
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        backdrop-filter: none !important;
     }
 
     .experience-badge {
@@ -1900,21 +1948,98 @@ ul {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: var(--primary);
-    color: white;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--text-color);
     z-index: 2000;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
     transition: var(--transition);
+    border-top: 1px solid var(--secondary);
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+.cookie-banner .container {
+    padding: 0;
+}
+
+.cookie-banner p {
+    font-size: 0.95rem;
+    margin: 0;
+    max-width: 65%;
+    line-height: 1.4;
 }
 
 .container-cookie {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 2rem;
+}
+
+.cookie-btns {
+    display: flex;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.cookie-btns .btn {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.8rem;
+    min-width: 140px;
+    text-align: center;
+}
+
+.cookie-close {
+    position: absolute;
+    top: 5px;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    color: var(--primary);
+    opacity: 0.5;
+    transition: var(--transition);
+    padding: 5px;
+    line-height: 1;
+}
+
+.cookie-close:hover {
+    opacity: 1;
+    color: var(--primary-dark);
 }
 
 .hide {
     transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .cookie-banner {
+        padding: 1.25rem 0;
+    }
+
+    .container-cookie {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.25rem;
+    }
+
+    .cookie-banner p {
+        max-width: 100%;
+    }
+
+    .cookie-btns {
+        width: 100%;
+        gap: 0.75rem;
+    }
+
+    .cookie-btns .btn {
+        flex: 1;
+        min-width: 0;
+        padding: 0.75rem 0.5rem;
+    }
 }
 
 /* Mobile Adjustments */
@@ -1932,7 +2057,7 @@ ul {
     }
 
     .menu-toggle {
-        display: block;
+        display: flex;
         z-index: 1001;
         /* Must be higher than main-nav z-index */
     }
@@ -2048,6 +2173,25 @@ ul {
 }
 
 @media (max-width: 768px) {
+
+    .process .section-title,
+    .faq .section-title,
+    .for-companies-process .section-title {
+        text-align: left !important;
+    }
+
+    .references .section-title {
+        text-align: left !important;
+        padding-left: 5.5%;
+    }
+
+    .about-brief .btn {
+        display: table;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
     .container {
         width: 90%;
         max-width: none;
@@ -2075,6 +2219,17 @@ ul {
 
     .main-nav.active {
         transform: translateX(0);
+    }
+
+    .how-i-work .container,
+    .for-companies .container,
+    .process .container,
+    .faq .container,
+    .main-footer .container,
+    .for-companies-process .container,
+    .wellbeing-intro-bg .container,
+    .wellbeing-section .container {
+        width: 80%;
     }
 
     .grid-2,
@@ -2110,6 +2265,24 @@ ul {
     .process-steps {
         grid-template-columns: 1fr;
         gap: var(--space-m);
+    }
+
+    .process {
+        padding-bottom: 0 !important;
+    }
+
+    .process .container {
+        padding-bottom: 0 !important;
+    }
+
+    .about-brief {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .about-brief .container {
+        padding-top: 5rem !important;
+        padding-bottom: 3.5rem !important;
     }
 
     .process-steps-4 {
@@ -2176,7 +2349,8 @@ ul {
     }
 
     .hero-buttons,
-    .flex-buttons {
+    .flex-buttons,
+    .hero-intro-buttons {
         flex-direction: column;
         gap: 1rem;
         align-items: flex-start;
@@ -2187,7 +2361,8 @@ ul {
     }
 
     .hero-buttons .btn,
-    .flex-buttons .btn {
+    .flex-buttons .btn,
+    .hero-intro-buttons .btn {
         width: 100%;
         text-align: center;
     }
@@ -2199,19 +2374,22 @@ ul {
 
     /* Mobile Background Adjustments */
     .about-brief {
-        background-size: cover;
-        background-position: left center;
-        background-attachment: scroll;
-        background-repeat: no-repeat;
+        background-image: none !important;
+        background-color: var(--bg-color);
     }
 }
 
 @media (max-width: 991px) {
+    .container-hero-intro {
+        padding-top: 2rem;
+        padding-bottom: 3rem;
+    }
+
     .hero {
         background: #f9f9f9;
         /* Remove background image on mobile as we show it as element */
         padding-top: 4.5rem;
-        padding-bottom: 2rem;
+        padding-bottom: 0;
     }
 
     .hero-container {
@@ -2237,18 +2415,28 @@ ul {
         margin-top: 1rem !important;
     }
 
+    .hero-mobile-image-wrapper {
+        display: block;
+        width: 100%;
+        margin-top: 1.7rem;
+    }
+
     .hero-mobile-image {
         display: block;
         width: 100%;
-        height: 280px;
-        /* Fixed height for crop effect */
-        object-fit: cover;
-        object-position: top;
-        /* Crop to top half */
-        margin-bottom: 0px;
-        /* Reset margin, we use negative margin on badge instead */
+        height: auto;
+        /* Zobrazena celá bez ořezu na mobilu */
         box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         z-index: 5;
+    }
+
+    @media (min-width: 601px) {
+        .hero-mobile-image {
+            height: 400px;
+            object-fit: cover;
+            object-position: top right;
+            /* Taller for tablets to show more of the desktop photo */
+        }
     }
 
     .hero-badge-wrapper {
@@ -2311,12 +2499,14 @@ ul {
     background: var(--primary);
     position: relative;
     transition: var(--transition);
+    margin: 0 auto;
 }
 
 .hamburger::before,
 .hamburger::after {
     content: '';
     position: absolute;
+    left: 0;
     width: 100%;
     height: 3px;
     background: var(--primary);
@@ -2495,6 +2685,7 @@ ul {
 .references-page h1 {
     font-size: var(--h1);
     margin-bottom: 2rem;
+    margin-top: 0 !important;
     color: var(--primary);
 }
 
@@ -2589,6 +2780,11 @@ ul {
     font-size: 1rem;
 }
 
+.references-page {
+    padding-top: 119px;
+    background-color: #fdfdfb;
+}
+
 @media (max-width: 1200px) {
 
     .about-me-page,
@@ -2616,6 +2812,7 @@ ul {
     .for-companies-content-box,
     .corporate-services-content {
         max-width: 100%;
+        width: 100%;
     }
 }
 
@@ -2636,8 +2833,14 @@ ul {
     .about-me-page,
     .services-page,
     .for-companies-page,
-    .corporate-services-section {
-        background-image: none;
+    .corporate-services-section,
+    .wellbeing-intro-bg {
+        background-image: none !important;
+        background-color: var(--bg-color);
+    }
+
+    .wellbeing-overlay {
+        display: none !important;
     }
 
     .about-me-page::before,
@@ -2650,27 +2853,68 @@ ul {
 
     .about-me-page,
     .services-page,
+    .how-i-work-page,
+    .references-page,
+    .contact-page {
+        padding-top: 170px !important;
+        padding-bottom: 1rem;
+    }
+
     .for-companies-page {
-        padding-top: 119px;
-        background-attachment: fixed;
-        background-position: center 119px;
-        background-size: auto calc(100vh - 119px);
+        padding-top: 85px !important;
+        padding-bottom: 1rem;
+    }
+
+    .corporate-services-section {
+        padding-top: 1rem;
+        padding-bottom: 3rem;
     }
 
     .about-me-container,
     .services-page-container,
-    .for-companies-container {
+    .for-companies-container,
+    .how-i-work-page-container,
+    .references-page .container,
+    .contact-page-container,
+    .corporate-services-container {
         width: 90%;
+        padding-top: 0 !important;
     }
 
     .about-me-content-box,
     .services-page-content-box,
-    .for-companies-content-box {
-        padding: 2.5rem 1.5rem;
+    .for-companies-content-box,
+    .how-i-work-page-content,
+    .contact-page-content,
+    .references-header-box,
+    .corporate-services-content {
+        padding: 0 1.5rem 1.5rem !important;
+    }
+
+    .for-companies-content-box h1,
+    .about-me-content-box h1,
+    .services-page-content-box h1,
+    .how-i-work-page-content h1,
+    .references-page h1,
+    .contact-page-content h1 {
+        margin-top: 0 !important;
     }
 
     .about-me-lead {
         font-size: 1.3rem;
+    }
+
+    .services-page-content-box .custom-quote,
+    .for-companies-content-box .custom-quote {
+        margin-bottom: 2.5rem;
+    }
+
+    .about-me-highlight-box {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 2rem 1.5rem !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
 }
 
@@ -2965,7 +3209,12 @@ ul {
 }
 
 .contact-form .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.captcha-group label {
+    font-weight: 600;
+    color: var(--primary);
 }
 
 .contact-form .form-row {
@@ -3027,6 +3276,15 @@ ul {
     margin-left: auto;
     padding: 0.8rem 2rem;
     font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+@media (max-width: 768px) {
+    .btn-submit {
+        margin-right: auto;
+        width: 100%;
+        max-width: 300px;
+    }
 }
 
 @media (max-width: 1200px) {
@@ -3081,5 +3339,14 @@ ul {
 
     .contact-page-content {
         padding: 2.5rem 1.5rem;
+    }
+}
+
+/* Added margin behind custom-quote on specific pages for PC version */
+@media (min-width: 992px) {
+
+    .services-page .custom-quote,
+    .for-companies-page .custom-quote {
+        margin-bottom: 1.5rem;
     }
 }

@@ -69,8 +69,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Cookie Banner
     const cookieBanner = document.getElementById('cookie-banner');
     const cookieAccept = document.getElementById('cookie-accept');
+    const cookieNecessary = document.getElementById('cookie-necessary');
+    const cookieClose = document.getElementById('cookie-close');
 
-    if (cookieBanner && cookieAccept) {
+    if (cookieBanner && (cookieAccept || cookieNecessary || cookieClose)) {
         // Show banner if not accepted
         if (!localStorage.getItem('cookieAccepted')) {
             setTimeout(() => {
@@ -78,10 +80,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 2000);
         }
 
-        cookieAccept.addEventListener('click', () => {
+        const closeBanner = () => {
             cookieBanner.classList.add('hide');
             localStorage.setItem('cookieAccepted', 'true');
-        });
+        };
+
+        if (cookieAccept) {
+            cookieAccept.addEventListener('click', closeBanner);
+        }
+
+        if (cookieNecessary) {
+            cookieNecessary.addEventListener('click', closeBanner);
+        }
+
+        if (cookieClose) {
+            cookieClose.addEventListener('click', closeBanner);
+        }
     }
 
     // Intersection Observer for animations
@@ -165,4 +179,48 @@ document.addEventListener('DOMContentLoaded', () => {
             link.classList.add('active');
         }
     });
+
+    // Custom Video Play Button Overlay
+    const video = document.getElementById('homepage-video');
+    const playBtnOverlay = document.getElementById('video-play-button');
+
+    if (video && playBtnOverlay) {
+        playBtnOverlay.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+            }
+        });
+        
+        video.addEventListener('play', () => {
+            playBtnOverlay.style.display = 'none';
+        });
+        
+        video.addEventListener('pause', () => {
+            playBtnOverlay.style.display = 'flex';
+        });
+    }
+    // Custom Math Captcha for Contact Form
+    const captchaForm = document.getElementById('contact-form');
+    const captchaQuestion = document.getElementById('captcha-question');
+    const captchaInput = document.getElementById('captcha');
+
+    if (captchaForm && captchaQuestion && captchaInput) {
+        // Generate random numbers
+        const num1 = Math.floor(Math.random() * 10) + 1;
+        const num2 = Math.floor(Math.random() * 10) + 1;
+        const correctAnswer = num1 + num2;
+
+        // Display question
+        captchaQuestion.textContent = `${num1} + ${num2}`;
+
+        // Validate on submit
+        captchaForm.addEventListener('submit', (e) => {
+            const userAnswer = parseInt(captchaInput.value, 10);
+            if (userAnswer !== correctAnswer) {
+                e.preventDefault();
+                alert('Nesprávný výsledek kontrolní otázky. Zkuste to prosím znovu.');
+                captchaInput.focus();
+            }
+        });
+    }
 });
